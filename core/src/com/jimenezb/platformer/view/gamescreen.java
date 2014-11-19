@@ -16,6 +16,7 @@ public class gamescreen implements Screen {
         map = new TmxMapLoader().load("map/map1.tmx"); //loading the map
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);//telling render how wide and long the map is.
         camera = new OrthographicCamera(14f, 14f); //this displays how much of the map we want to show.
+        camera.position.set(camera.viewportWidth/2f, camera.viewportHeight/2f,0);
     }
 
     @Override

@@ -17,6 +17,7 @@ public class gamescreen implements Screen {
         map = new TmxMapLoader().load("map/map1.tmx"); //loading the map
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);//telling render how wide and tall the map is.
 
+        //stores the width and height of the platformer window.
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 

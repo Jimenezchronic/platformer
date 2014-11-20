@@ -1,6 +1,7 @@
 package com.jimenezb.platformer.view;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -14,8 +15,12 @@ public class gamescreen implements Screen {
 
     public gamescreen() {
         map = new TmxMapLoader().load("map/map1.tmx"); //loading the map
-        renderer = new OrthogonalTiledMapRenderer(map, 1/70f);//telling render how wide and long the map is.
-        camera = new OrthographicCamera(14f, 14f); //this displays how much of the map we want to show.
+        renderer = new OrthogonalTiledMapRenderer(map, 1/70f);//telling render how wide and tall the map is.
+
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
+
+        camera = new OrthographicCamera(14f, 14f * (height/width)); //this displays how much of the map we want to show and also fixes the stretching of the tiles.
         camera.position.set(camera.viewportWidth/2f, camera.viewportHeight/2f,0); //adjusted my camera to fit the map.
     }
 

@@ -3,6 +3,7 @@ package com.jimenezb.platformer.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -52,11 +53,17 @@ public class gamescreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+       camera.viewportWidth = 14f;
+        camera.viewportHeight = 14f * height/width; //our new height and width
+        camera.update(); //updating the camera
+
 
     }
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClearColor(0.12f, 0.70f, 0.70f, 1f); //SELECTING A COLOR
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //CLEARING THE SCREEN USING A COLOR WE HAVE CHOSEN
         camera.update();
         renderer.setView(camera);
         renderer.render(); //it renders

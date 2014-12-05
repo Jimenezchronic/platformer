@@ -15,7 +15,7 @@ public class Player {
     public TextureRegion[] spriteFrames; //an array of regions of the texture.
 
     public Player() {
-        position = new Vector2(0, 0); //selecting the position for my player.
+        position = new Vector2(0, 3); //selecting the position for my player.
         spritesheet = new Texture(Gdx.files.internal("img/aliens.png")); //accessing the img folder to get the aliens.png
         TextureRegion[][] spritesheetFrames = TextureRegion.split(spritesheet, 70, 100);//it splits up our spritesheet  to fit our texture region
 
@@ -35,9 +35,10 @@ public class Player {
     }
 
     public void draw(Batch spriteBatch) { //draw the images on our spritesheet
-    spriteBatch.draw(spriteFrames[44],0,0,70,100); //selecting which spriteframe to display
+    spriteBatch.draw(spriteFrames[44],position.x , position.y , 70* (1/70f) , 100*(1/70f)); //selecting which spriteframe to display
 }
 public void update(float deltaTime){ // it changes the specifics of the player
+position.x += deltaTime; // limits the players on how fast it goes
 
 }
 }

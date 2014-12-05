@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -15,7 +16,7 @@ public class gamescreen implements Screen {
    public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;  //these are variables.
     public OrthographicCamera camera;
-    public SpriteBatch spriteBatch; //draw sprites on the screen
+    public Batch spriteBatch; //draw sprites on the screen
     public Player player; //creating the player
 
     public gamescreen() {
@@ -28,7 +29,7 @@ public class gamescreen implements Screen {
 
         camera = new OrthographicCamera(14f, 14f * (height/width)); //this displays how much of the map we want to show and also fixes the stretching of the tiles.
         camera.position.set(camera.viewportWidth/2f, camera.viewportHeight/2f,0); //adjusted my camera to fit the map.
-        spriteBatch = new SpriteBatch(); //creates our spritebatch
+        spriteBatch = renderer.getSpriteBatch(); // accessing the spritebatch to our levelmap
         player= new Player();
     }
 
@@ -73,6 +74,7 @@ public class gamescreen implements Screen {
         camera.update();
         renderer.setView(camera);
         renderer.render(); //it renders
+        player.update(delta); //updates the position
         spriteBatch.begin(); //tells spritebatch to begin draws
         player.draw(spriteBatch);
         spriteBatch.end(); //tells spritebatch to ends draws

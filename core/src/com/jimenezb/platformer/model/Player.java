@@ -3,16 +3,17 @@ package com.jimenezb.platformer.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-
-import sun.font.TextRecord;
 
 public class Player {
     public Vector2 position; // a point for X and Y
     public Texture spritesheet; //storing an image
     public TextureRegion[] spriteFrames; //an array of regions of the texture.
+    public Animation animation;
+    private float stateTime; //
 
     public Player() {
         position = new Vector2(0, 3); //selecting the position for my player.
@@ -32,13 +33,20 @@ public class Player {
                 spriteFrames[counter++] = sprite; //adds one to the spriteframes array
             }
         }
+
+        TextureRegion[]animationFrames = new TextureRegion[2]; //creating a array for 2 frames
+        animationFrames[0] = spriteFrames[1]; //selected animation frames
+        animationFrames[1] = spriteFrames[2];
+        animation = new Animation(.5f, animationFrames); //telling animation that each frame will last 1 second
+        stateTime = 0f;
     }
 
     public void draw(Batch spriteBatch) { //draw the images on our spritesheet
-    spriteBatch.draw(spriteFrames[44],position.x , position.y , 70* (1/70f) , 100*(1/70f)); //selecting which spriteframe to display
+    spriteBatch.draw(animation.getKeyFrame(stateTime, true) ,position.x , position.y , 70* (1/70f) , 100*(1/70f)); //selecting which spriteframe to display
 }
 public void update(float deltaTime){ // it changes the specifics of the player
-position.x += deltaTime; // limits the players on how fast it goes
+stateTime  += deltaTime;
+    position.x += deltaTime; // limits the players on how fast it goes
 
 }
 }

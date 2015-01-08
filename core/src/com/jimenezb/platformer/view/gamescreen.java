@@ -10,18 +10,25 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.jimenezb.platformer.model.Player;
 
-public class gamescreen implements Screen {
+public class GameScreen implements Screen {
    public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;  //these are variables.
     public OrthographicCamera camera;
     public Batch spriteBatch; //draw sprites on the screen
     public Player player; //creating the player
+    public static World gameworld;
+    private Box2DDebugRenderer debugRenderer;
 
-    public gamescreen() {
+    public GameScreen() {
         map = new TmxMapLoader().load("map/map1.tmx"); //loading the map
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);//telling render how wide and tall the map is.
+        gameworld = new World(new Vector2(0, -10), true);
+        debugRenderer = new Box2DDebugRenderer();
 
         //stores the width and height of the platformer window.
         float width = Gdx.graphics.getWidth();
@@ -30,7 +37,7 @@ public class gamescreen implements Screen {
         camera = new OrthographicCamera(14f, 14f * (height/width)); //this displays how much of the map we want to show and also fixes the stretching of the tiles.
         camera.position.set(camera.viewportWidth/2f, camera.viewportHeight/2f,0); //adjusted my camera to fit the map.
         spriteBatch = renderer.getSpriteBatch(); // accessing the spritebatch to our levelmap
-        player= new Player();
+        player= new Player(70, 100);
     }
 
     @Override
@@ -78,5 +85,7 @@ public class gamescreen implements Screen {
         spriteBatch.begin(); //tells spritebatch to begin draws
         player.draw(spriteBatch);
         spriteBatch.end(); //tells spritebatch to ends draws
+        debugRenderer.render(gameworld, camera.combined);
+        gameworld.step(1/60f, 1, 1);
     }
 }

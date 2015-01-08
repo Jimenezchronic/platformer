@@ -6,23 +6,47 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.jimenezb.platformer.view.GameScreen;
+
 
 import java.util.HashMap;
 
 
+
 public class Player {
     public Vector2 position; // a point for X and Y
-
+    public float width;
+    public float height;
     public Spritesheet spritesheet;
     public String currentAnimation;
-
     private float stateTime;
     private HashMap <String, Animation> animations;
 
-    public Player() {
+    public Player(int width, int height) {
         position = new Vector2(0, 3); //selecting the position for my player.
-        spritesheet = new Spritesheet("img/aliens.png", 70, 100);
+        this.width = width * (1/70f);
+        this.height = height * (1/70f);
+        spritesheet = new Spritesheet("img/aliens.png", width, height);
         animations = new HashMap<String, Animation>();
+
+        BodyDef bodydefinition = new BodyDef();
+        bodydefinition.type = BodyDef.BodyType.DynamicBody;
+        bodydefinition.position.set(position);
+        Body playerBody = GameScreen.gameworld.createBody(bodydefinition);
+        playerBody.setUserData(this);
+
+        PolygonShape rectangleShape = new PolygonShape();
+        rectangleShape.setAsBox(this.width/2f, this.height/2f,  new Vector2(this.width / 2f, this.height /2f), 0f);
+        FixtureDef fixtureDefinition = new FixtureDef();
+        fixtureDefinition.shape = rectangleShape;
+
+        playerBody.createFixture(fixtureDefinition);
+        rectangleShape.dispose();
+
 
         animations.put("walk", spritesheet.createAnimation(9, 10, 0.5f));
         animations.put("climb" ,spritesheet.createAnimation(1, 2, 0.2f) );
@@ -40,7 +64,7 @@ public class Player {
         animations.put("swimleft", spritesheet.flipAnimation(animations.get("swimming"), true, false));
         animations.put("idleleft", spritesheet.flipAnimation(animations.get("idle"), true, false));
 
-        currentAnimation = "jumpleft";
+        currentAnimation         = "walkleft";
 
         stateTime = 0f;
     }
@@ -51,7 +75,6 @@ public class Player {
     }
 public void update(float deltaTime){ // it changes the specifics of the player
     stateTime  += deltaTime;
-    position.x += deltaTime; // limits the players on how fast it goes
 
 }
 }

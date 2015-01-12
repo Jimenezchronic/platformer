@@ -4,17 +4,18 @@ package com.jimenezb.platformer.model;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.jimenezb.platformer.controller.LevelController;
 import com.jimenezb.platformer.view.GameScreen;
 
 
 import java.util.HashMap;
 
+import javax.lang.model.type.UnionType;
 
 
 public class Player {
@@ -28,15 +29,15 @@ public class Player {
 
     public Player(int width, int height) {
         position = new Vector2(0, 3); //selecting the position for my player.
-        this.width = width * (1/70f);
-        this.height = height * (1/70f);
+        this.width = width * LevelController.UNIT_SCALE;
+        this.height = height * LevelController.UNIT_SCALE;
         spritesheet = new Spritesheet("img/aliens.png", width, height);
         animations = new HashMap<String, Animation>();
 
         BodyDef bodydefinition = new BodyDef();
         bodydefinition.type = BodyDef.BodyType.DynamicBody;
         bodydefinition.position.set(position);
-        Body playerBody = GameScreen.gameworld.createBody(bodydefinition);
+        Body playerBody = LevelController.gameworld.createBody(bodydefinition);
         playerBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();

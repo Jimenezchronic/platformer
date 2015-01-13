@@ -18,21 +18,11 @@ import java.util.HashMap;
 import javax.lang.model.type.UnionType;
 
 
-public class Player {
-    public Vector2 position; // a point for X and Y
-    public float width;
-    public float height;
-    public Spritesheet spritesheet;
-    public String currentAnimation;
-    private float stateTime;
-    private HashMap <String, Animation> animations;
+public class Player extends Sprite{
 
-    public Player(int width, int height) {
-        position = new Vector2(0, 3); //selecting the position for my player.
-        this.width = width * LevelController.UNIT_SCALE;
-        this.height = height * LevelController.UNIT_SCALE;
-        spritesheet = new Spritesheet("img/aliens.png", width, height);
-        animations = new HashMap<String, Animation>();
+
+    public Player(Vector2 position,int width, int height) {
+    super(position, width, height);
 
         BodyDef bodydefinition = new BodyDef();
         bodydefinition.type = BodyDef.BodyType.DynamicBody;
@@ -67,15 +57,13 @@ public class Player {
 
         currentAnimation         = "walkleft";
 
-        stateTime = 0f;
+
     }
 
     public void draw(Batch spriteBatch) { //draw the images on our spritesheet
-    spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true) ,position.x , position.y , 70* (1/70f) , 100*(1/70f)); //selecting which spriteframe to display
-
+    super.draw(spriteBatch);
     }
 public void update(float deltaTime){ // it changes the specifics of the player
-    stateTime  += deltaTime;
-
+    super.update(deltaTime);
 }
 }

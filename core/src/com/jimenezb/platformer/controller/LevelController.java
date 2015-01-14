@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.jimenezb.platformer.model.Level;
 import com.jimenezb.platformer.model.Player;
+import com.jimenezb.platformer.model.Sprite;
 
 public class LevelController {
     public static OrthogonalTiledMapRenderer renderer;
@@ -25,7 +26,7 @@ public class LevelController {
         level = new Level("map/map1.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map,UNIT_SCALE);//telling render how wide and tall the map is.
         spriteBatch = renderer.getSpriteBatch(); // accessing the spritebatch to our levelmap
-        gameworld = new World(new Vector2(0, -10), true);
+        gameworld = new World(new Vector2(0, 0), true);
         debugRenderer = new Box2DDebugRenderer();
         worldBodies = new Array<Body>();
 
@@ -47,8 +48,8 @@ private static void updateworldBodies(){
    worldBodies.clear();
     gameworld.getBodies(worldBodies);
     for (Body body : worldBodies){
-        Player playerBody = (Player)body.getUserData();
-        playerBody.position  = body.getPosition();
+        Sprite spriteBody = (Sprite)body.getUserData();
+        spriteBody.position  = body.getPosition();
     }
 }
 }

@@ -4,11 +4,13 @@ package com.jimenezb.platformer.model;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.jimenezb.platformer.controller.LevelController;
 
 import java.util.HashMap;
 
 public class Sprite {
+    public Body phyicsBody;
     public Vector2 position; // a point for X and Y
     public float width;
     public float height;

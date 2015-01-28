@@ -14,11 +14,8 @@
   </data>
  </layer>
  <objectgroup color="#ff55ff" name="collision" width="20" height="10">
-  <object name="ground" type="solid" x="0" y="490" width="210" height="140"/>
-  <object name="ground" type="solid" x="280" y="490" width="140" height="140"/>
-  <object name="ground" type="solid" x="210" y="560" width="70" height="70"/>
-  <object name="ground" type="solid" x="560" y="490" width="210" height="140"/>
-  <object name="ground" type="solid" x="910" y="490" width="210" height="140"/>
-  <object name="ground" type="solid" x="420" y="490" width="140" height="140"/>
+  <object x="0" y="0">
+   <polyline points="0,0 0,490 210,490 280,490 420,490 1400,490 1400,0"/>
+  </object>
  </objectgroup>
 </map>

@@ -11,12 +11,16 @@ import com.jimenezb.platformer.model.Player;
 public class PlayerController {
 
 public static Player player; //creating the player
+    public  static String movementAction;
+    public static String specialAction;
     private static final float VELOCITY = 1f;
+    private static final float VELOCITY1 = -1f;
     private static  final float MAX_VELOCITY = 5f;
 
 public static void initializecontroller(){
-
-    player= new Player(new Vector2(4,4), 70, 100);
+    player= new Player(new Vector2(4,4), 70, 100, "img/aliens.png");
+    movementAction = "";
+    specialAction = "";
 }
  public static void update(float deltatime){
      handleInput();
@@ -34,8 +38,12 @@ private static void handleInput(){
         player.phyicsBody.setLinearVelocity(velocity.x, velocity.y);
     }
 
-    if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+    if(movementAction .equalsIgnoreCase("right")){
         player.phyicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);
+    }
+
+    else if(movementAction .equalsIgnoreCase("left")){
+
     }
 }
 }

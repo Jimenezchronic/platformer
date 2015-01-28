@@ -2,27 +2,23 @@ package com.jimenezb.platformer.model;
 
 
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.jimenezb.platformer.controller.LevelController;
-import com.jimenezb.platformer.view.GameScreen;
 
 
-import java.util.HashMap;
 
-import javax.lang.model.type.UnionType;
+
 
 
 public class Player extends Sprite{
 
 
-    public Player(Vector2 position,int width, int height) {
-    super(position, width, height);
+    public Player(Vector2 position,int width, int height, String sheetPath) {
+    super(position, width, height, sheetPath);
 
         BodyDef bodydefinition = new BodyDef();
         bodydefinition.type = BodyDef.BodyType.DynamicBody;

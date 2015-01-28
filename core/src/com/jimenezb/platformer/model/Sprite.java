@@ -19,11 +19,12 @@ public class Sprite {
     protected float stateTime;
     protected HashMap<String, Animation> animations;
 
-    public Sprite(Vector2 position, int width, int height) {
-        position = new Vector2(0, 3); //selecting the position for my player.
+
+    public Sprite(Vector2 position, int width, int height, String sheetPath) {
+        this.position = new Vector2(0, 0); //selecting the position for my player.
         this.width = width * LevelController.UNIT_SCALE;
         this.height = height * LevelController.UNIT_SCALE;
-        spritesheet = new Spritesheet("img/aliens.png", width, height);
+        spritesheet = new Spritesheet(sheetPath, width, height);
         animations = new HashMap<String, Animation>();
         stateTime = 0f;
     }

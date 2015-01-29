@@ -15,7 +15,7 @@ public class CameraController {
         camera = new OrthographicCamera(14f, 14f * (height/width)); //this displays how much of the map we want to show and also fixes the stretching of the tiles.
         camera.position.set(camera.viewportWidth/2f, camera.viewportHeight/2f,0); //adjusted my camera to fit the map.
         inputCamera = new OrthographicCamera(14f, 14f * (height / width));
-        inputCamera.position.set(inputCamera.viewportHeight / 2f, inputCamera.viewportWidth / 2f, 0);
+        inputCamera.position.set( inputCamera.viewportWidth / 2f,inputCamera.viewportHeight / 2f, 0);
         inputCamera.update();
     }
     public static  void update(){

@@ -45,7 +45,7 @@ public static void draw(){
     spriteBatch.setProjectionMatrix(CameraController.inputCamera.combined);
     InoutController.draw(spriteBatch);
 
-    debugRenderer.render(gameworld, CameraController.camera.combined);
+    //debugRenderer.render(gameworld, CameraController.camera.combined);
 }
 public  static  void update(float deltaTime){
     renderer.setView(CameraController.camera);

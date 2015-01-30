@@ -16,6 +16,7 @@ public class Sprite {
     public float height;
     public Spritesheet spritesheet;
     public String currentAnimation;
+    public String directinon;
     protected float stateTime;
     protected HashMap<String, Animation> animations;
 
@@ -27,6 +28,7 @@ public class Sprite {
         spritesheet = new Spritesheet(sheetPath, width, height);
         animations = new HashMap<String, Animation>();
         stateTime = 0f;
+        directinon = "right";
     }
     public void draw(Batch spriteBatch) { //draw the images on our spritesheet
         spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true) ,position.x , position.y , 70* (1/70f) , 100*(1/70f)); //selecting which spriteframe to display

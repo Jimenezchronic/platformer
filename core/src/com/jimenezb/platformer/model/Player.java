@@ -35,22 +35,21 @@ public class Player extends Sprite{
         rectangleShape.dispose();
 
 
-        animations.put("walk", spritesheet.createAnimation(9, 10, 0.5f));
+        animations.put("walkright", spritesheet.createAnimation(9, 10, 0.5f));
         animations.put("climb" ,spritesheet.createAnimation(1, 2, 0.2f) );
         animations.put("ducking", spritesheet.createAnimation(3, 3, 0.5f));
         animations.put("hurting", spritesheet.createAnimation(4, 4, 0.5f));
         animations.put("jumping", spritesheet.createAnimation(5, 5, 0.5f));
         animations.put("stand", spritesheet.createAnimation(0, 0, 0.5f));
-        animations.put("idle", spritesheet.createAnimation(6, 6, 0.5f));
+        animations.put("idleright", spritesheet.createAnimation(6, 6, 0.5f));
         animations.put("swimming", spritesheet.createAnimation(7, 8, 0.5f));
 
-        animations.put("walkleft", spritesheet.flipAnimation(animations.get("walk"), true, false));
+        animations.put("walkleft", spritesheet.flipAnimation(animations.get("walkright"), true, false));
         animations.put("duckleft", spritesheet.flipAnimation(animations.get("ducking"), true, false));
         animations.put("hurtleft", spritesheet.flipAnimation(animations.get("hurting"), true, false));
         animations.put("jumpleft", spritesheet.flipAnimation(animations.get("jumping"), true, false));
         animations.put("swimleft", spritesheet.flipAnimation(animations.get("swimming"), true, false));
-        animations.put("idleleft", spritesheet.flipAnimation(animations.get("idle"), true, false));
-
+        animations.put("idleleft", spritesheet.flipAnimation(animations.get("idleright"), true, false));
         currentAnimation         = "walkleft";
 
 

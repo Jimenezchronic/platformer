@@ -1,7 +1,7 @@
 package com.jimenezb.platformer.controller;
 
 
-import com.badlogic.gdx.InputAdapter;
+
 import com.badlogic.gdx.graphics.g2d.Batch;
 
 import com.badlogic.gdx.maps.MapObject;
@@ -14,7 +14,6 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.jimenezb.platformer.model.Bodies;
 import com.jimenezb.platformer.model.Level;
-import com.jimenezb.platformer.model.Player;
 import com.jimenezb.platformer.model.Sprite;
 
 public class LevelController {

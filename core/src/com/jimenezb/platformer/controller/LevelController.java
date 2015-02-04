@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.jimenezb.platformer.model.Bodies;
+import com.jimenezb.platformer.model.CollisionListener;
 import com.jimenezb.platformer.model.Level;
 import com.jimenezb.platformer.model.Sprite;
 
@@ -33,6 +34,7 @@ public class LevelController {
         debugRenderer = new Box2DDebugRenderer();
         worldBodies = new Array<Body>();
         createLevelBodies();
+        gameworld.setContactListener(new CollisionListener());
 
     }
 public static void draw(){

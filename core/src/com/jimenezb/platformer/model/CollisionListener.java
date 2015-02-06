@@ -14,6 +14,9 @@ public class CollisionListener implements ContactListener {
     public void beginContact(Contact contact) {
         Fixture FixtureA = contact.getFixtureA();
         Fixture FixtureB = contact.getFixtureB();
+
+        boolean sensorA;
+        boolean sensorB;
             }
 
     @Override

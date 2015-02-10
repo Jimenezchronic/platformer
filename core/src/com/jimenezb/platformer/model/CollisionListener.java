@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.jimenezb.platformer.controller.PlayerController;
 
 import java.lang.reflect.Field;
 
@@ -15,9 +16,17 @@ public class CollisionListener implements ContactListener {
         Fixture FixtureA = contact.getFixtureA();
         Fixture FixtureB = contact.getFixtureB();
 
-        boolean sensorA;
-        boolean sensorB;
+        boolean sensorA = FixtureA.isSensor();
+        boolean sensorB = FixtureB.isSensor();
+
+
+        if (sensorA || sensorB){
+            PlayerController.grounded = true;
+        }
+
             }
+
+
 
     @Override
     public void endContact(Contact contact) {

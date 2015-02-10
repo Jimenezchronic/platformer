@@ -9,8 +9,8 @@
   </data>
  </layer>
  <objectgroup color="#ff55ff" name="collision" width="20" height="10">
-  <object name="ground" type="ground" x="0" y="0">
-   <polyline points="0,0 0,490 770,490 770,0"/>
+  <object name="solid" type="solid" x="0" y="0">
+   <polyline points="0,0 0,490 1400,490 1400,0"/>
   </object>
  </objectgroup>
  <objectgroup name="blocks" width="20" height="10"/>

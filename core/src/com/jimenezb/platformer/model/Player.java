@@ -45,7 +45,7 @@ public class Player extends Sprite{
         sensorShape.dispose();
 
 
-        animations.put("walkright", spritesheet.createAnimation(9, 10, 0.5f));
+        animations.put("walkright", spritesheet.createAnimation(9, 10, 0.2f));
         animations.put("climb" ,spritesheet.createAnimation(1, 2, 0.2f) );
         animations.put("ducking", spritesheet.createAnimation(3, 3, 0.5f));
         animations.put("hurting", spritesheet.createAnimation(4, 4, 0.5f));

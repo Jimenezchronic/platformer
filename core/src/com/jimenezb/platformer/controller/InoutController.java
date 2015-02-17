@@ -41,6 +41,10 @@ public class InoutController {
                 if (keycode == Input.Keys.RIGHT){
                     PlayerController.movementAction = "right";
                 }
+
+                else if(keycode == Input.Keys.LEFT) {
+                PlayerController.movementAction = "left";
+                }
                 return true;
             }
 

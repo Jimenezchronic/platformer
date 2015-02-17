@@ -12,6 +12,7 @@ public static Player player; //creating the player
     public  static String movementAction;
     public static String specialAction;
     private static final float VELOCITY = 1f;
+    private static final float VELOCITY1 = -1f;
     public static  boolean grounded;
     private static  final float MAX_VELOCITY = 5f;
     private enum State{
@@ -48,7 +49,8 @@ private static void handleInput(){
     }
 
     else if(movementAction .equalsIgnoreCase("left")){
-    player.directinon="left";
+        player.phyicsBody.applyLinearImpulse(VELOCITY1, 0f, position.x, position.y, true);
+        player.directinon="left";
     }
     if (Math.abs(velocity.x) > 0){
         playerState = State.Walk;
@@ -56,6 +58,7 @@ private static void handleInput(){
     else{
         playerState = State.Idle;
         }
+    
             setCurrentAnimation();
     }
     private static void setCurrentAnimation(){

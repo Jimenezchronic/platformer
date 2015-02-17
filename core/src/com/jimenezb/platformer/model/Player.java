@@ -1,4 +1,4 @@
-package com.jimenezb.platformer.model;
+    package com.jimenezb.platformer.model;
 
 
 
@@ -9,13 +9,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.jimenezb.platformer.controller.LevelController;
 
-
-
-
-
-
 public class Player extends Sprite{
-
 
     public Player(Vector2 position,int width, int height, String sheetPath) {
     super(position, width, height, sheetPath);
@@ -69,7 +63,7 @@ public class Player extends Sprite{
     public void draw(Batch spriteBatch) { //draw the images on our spritesheet
     super.draw(spriteBatch);
     }
-public void update(float deltaTime){ // it changes the specifics of the player
+    public void update(float deltaTime){ // it changes the specifics of the player
     super.update(deltaTime);
 }
 }

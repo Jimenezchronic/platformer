@@ -55,11 +55,16 @@ private static void handleInput(){
     if (Math.abs(velocity.x) > 0){
         playerState = State.Walk;
         }
+    else if(Math.abs(VELOCITY1) > 0 ){
+        playerState = State.Walk;
+    }
+
     else{
         playerState = State.Idle;
         }
     
             setCurrentAnimation();
+
     }
     private static void setCurrentAnimation(){
         if (player.directinon.equals("right")){

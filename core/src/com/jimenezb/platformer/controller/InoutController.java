@@ -59,6 +59,10 @@ public class InoutController {
                 if (keycode == Input.Keys.RIGHT){
                     PlayerController.movementAction = "";
                 }
+
+                else if (keycode == Input.Keys.LEFT){
+                    PlayerController.movementAction = "";
+                }
                 return true;
             }
 
@@ -71,7 +75,11 @@ public class InoutController {
                             PlayerController.movementAction = "right";
                               }
                         }
-
+                        else if (input.getBoundingBox(). contains(screenX, screenY)){
+                        if (input.action.equalsIgnoreCase("left")) {
+                            PlayerController.movementAction = "left";
+                        }
+                    }
                    }
                 return true;
             }
@@ -85,7 +93,11 @@ public class InoutController {
                             PlayerController.movementAction = "";
                         }
                     }
-
+                        else if(input.getBoundingBox().contains(screenX, screenY)){
+                        if (input.action.equalsIgnoreCase("left")) {
+                            PlayerController.movementAction = "";
+                        }
+                    }
                 }
                 return true;
             }
